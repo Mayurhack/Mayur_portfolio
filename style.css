@@ -513,3 +513,142 @@ footer{
 }
 }
 ```
+```css
+/* ==========================
+   ADVANCED RESPONSIVE DESIGN
+========================== */
+
+@media screen and (max-width: 992px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+    gap:50px;
+}
+
+.hero-left{
+    max-width:100%;
+}
+
+.hero-buttons{
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.cyber-info{
+    position:relative;
+    right:auto;
+    top:auto;
+    flex-direction:row;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.about-container{
+    flex-direction:column;
+    text-align:center;
+}
+
+.about-features{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.social-sidebar{
+    display:none;
+}
+
+}
+
+@media screen and (max-width:768px){
+
+.nav-links{
+    position:absolute;
+    top:80px;
+    right:0;
+    width:100%;
+    background:#050b14;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+    display:none;
+}
+
+.nav-links.show{
+    display:flex;
+}
+
+.menu-btn{
+    display:block;
+}
+
+.hero h1{
+    font-size:2.7rem;
+}
+
+.hero-right img{
+    width:280px;
+}
+
+.section-title h2{
+    font-size:2rem;
+}
+
+.skills-grid,
+.project-grid,
+.cert-grid,
+.contact-container{
+    grid-template-columns:1fr;
+}
+
+.about-features{
+    grid-template-columns:1fr;
+}
+
+.info-card{
+    width:140px;
+}
+
+}
+
+@media screen and (max-width:480px){
+
+.hero{
+    padding:100px 20px;
+}
+
+section{
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:2.2rem;
+}
+
+.hero p{
+    font-size:14px;
+}
+
+.btn{
+    width:100%;
+    text-align:center;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.hero-right img{
+    width:230px;
+}
+
+.about-image img{
+    width:220px;
+}
+
+.logo{
+    font-size:1.5rem;
+}
+
+}
+```
