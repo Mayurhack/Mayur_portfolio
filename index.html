@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayur Namdev Chirutkar | Cybersecurity Portfolio</title>
+    <style>
+        :root {
+            /* Dark Mode (Default / Cyber Aesthetic) */
+            --bg-primary: #0a1118;
+            --bg-secondary: #121e2b;
+            --accent-primary: #e94560;
+            --accent-secondary: #0f3460;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --tag-bg: rgba(233, 69, 96, 0.1);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --accent-primary: #db2777;
+            --accent-secondary: #1e3a8a;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --tag-bg: rgba(219, 39, 119, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Controls / Toggle Switch */
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent-primary);
+        }
+
+        /* Header Setup */
+        header {
+            border-bottom: 2px solid var(--accent-secondary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-primary);
+            text-decoration: underline;
+        }
+
+        /* Sections Layout */
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-primary);
+            padding-left: 10px;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Structure */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media(min-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 12rem 1fr;
+            }
+        }
+
+        .skills-category {
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .skills-list {
+            color: var(--text-muted);
+        }
+
+        /* Projects Layout */
+        .project-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-secondary);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            background-color: var(--tag-bg);
+            color: var(--accent-primary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .project-role {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Education & Certs Layout */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .edu-name {
+            font-weight: 700;
+        }
+
+        .edu-meta {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .cert-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem 1.5rem;
+        }
+
+        @media(min-width: 500px) {
+            .cert-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .cert-bullet {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="controls">
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+                🌙 <span id="toggleText">Light Mode</span>
+            </button>
+        </div>
+
+        <header>
+            <h1>Mayur Namdev Chirutkar</h1>
+            <div class="subtitle">Cybersecurity Practitioner & Developer</div>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:mayurnchirutkar@gmail.com">mayurnchirutkar@gmail.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/mayurchirutkar" target="_blank">linkedin.com/in/mayurchirutkar</a></span>
+                <span>🌐 <a href="https://github.com/mayurnamdev" target="_blank">github.com/mayurnamdev</a></span>
+                <span>📍 Gujarat, India</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>📌 Professional Summary</h2>
+            <p>
+                Results-driven cybersecurity professional and system developer specializing in <strong>Zero Trust Architecture (ZTA)</strong>, infrastructure defense, and modern vulnerability management pipelines. Proven experience deploying secure next-generation firewalls, conducting end-to-end Vulnerability Assessment and Penetration Testing (VAPT), and architecting stable multi-user applications. Focused on engineering shifts from standard perimeter models to automated identity-centric threat hunting structures.
+            </p>
+        </section>
+
+        <section>
+            <h2>🛠️ Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skills-category">Cybersecurity & VAPT</div>
+                <div class="skills-list">Zero Trust Architecture (ZTA), Micro-segmentation, Ethical Hacking, Digital Forensics, Network Discovery, Active Directory Controls, Threat Orchestration</div>
+                
+                <div class="skills-category">Tools & Core Platforms</div>
+                <div class="skills-list">Nmap, Burp Suite, Nessus Professional, pfSense, Sophos XGS Firewall, AWS Security Center, Wireshark, Windsurf IDE</div>
+                
+                <div class="skills-category">Frameworks & Standards</div>
+                <div class="skills-list">NIST SP 800-207 (Zero Trust Standard), ISO/IEC 27001 Standard, OWASP Top 10 Frameworks</div>
+                
+                <div class="skills-category">Systems & Hosting</div>
+                <div class="skills-list">Ubuntu/Linux Enterprise Administration, Bash Scripting, Web Meta-frameworks, Secure Virtual Private Clouds</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🚀 Key Cybersecurity Projects</h2>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">From "Trust but Verify" to Never Trust: A Review of Zero Trust Architecture</div>
+                    <span class="project-tag">Research & Architecture</span>
+                </div>
+                <div class="project-role">Primary Researcher & Author</div>
+                <p>Authored a comprehensive, systematic literature review analyzing the paradigm shifts in network security frameworks between 2018 and 2026.</p>
+                <ul>
+                    <li>Evaluated critical architectural transitions from standard legacy perimeters to identity-centric asset verification models.</li>
+                    <li>Analyzed explicit micro-segmentation strategies and the criteria for AI-driven automated threat hunting orchestration.</li>
+                    <li>Mapped strict platform guidelines against compliance metrics specified in global enterprise standards.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Enterprise Network Defense & Infrastructure Deployment</div>
+                    <span class="project-tag">Infrastructure</span>
+                </div>
+                <div class="project-role">Network Security Specialist</div>
+                <p>Architected and successfully deployed hardened network segmentations using enterprise-grade pfSense and Sophos XGS systems.</p>
+                <ul>
+                    <li>Configured Next-Generation Firewall (NGFW) deep-packet processing rules, isolated VLAN topologies, and secure cross-site VPN tunnels.</li>
+                    <li>Enforced granular network-level Access Control Lists (ACLs) to minimize internal lateral movement threats.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Automated Vulnerability Management Pipeline</div>
+                    <span class="project-tag">VAPT Strategy</span>
+                </div>
+                <div class="project-role">Security Analyst</div>
+                <p>Designed and executed continuous vulnerability scanning protocols for test assets leveraging Nessus Professional.</p>
+                <ul>
+                    <li>Tailored high-performance custom target scan profiles and applied NASL (Nessus Attack Scripting Language) scripts for targeted exploit detection.</li>
+                    <li>Delivered risk-prioritized remediation strategies and system patch workflows.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>🎓 Education & Certifications</h2>
+            <div class="edu-item">
+                <div>
+                    <span class="edu-name">Integrated Master of Computer Applications (IMCA)</span><br>
+                    <span class="edu-meta">Parul University, Gujarat, India</span>
+                </div>
+                <div><strong>Ongoing Program</strong></div>
+            </div>
+
+            <div class="cert-list">
+                <div class="cert-item"><div class="cert-bullet"></div>Hands-on Vulnerability Scanning with Nessus</div>
+                <div class="cert-item"><div class="cert-bullet"></div>Sophos XGS Firewall Modular Management</div>
+                <div class="cert-item"><div class="cert-bullet"></div>pfSense Network Security Architecture</div>
+                <div class="cert-item"><div class="cert-bullet"></div>AWS Security Automation 90-Day Intensive</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🏆 Technical Engagement</h2>
+            <ul>
+                <li><strong>Competitions & Live Arenas:</strong> Active contender on the Unstop platform, tackling live Capture The Flag (CTF) tracks, national hackathons, and security engineering sprints.</li>
+                <li><strong>Cloud Infrastructure Specialization:</strong> Completed an explicit 90-day technical specialization covering Amazon Web Services (AWS) VPC design, automated cloud configurations, and automated response blueprints.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const toggleText = document.getElementById('toggleText');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.innerHTML = '🌙 <span>Light Mode</span>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '☀️ <span>Dark Mode</span>';
+            }
+        });
+    </script>
+</body>
+</html>
