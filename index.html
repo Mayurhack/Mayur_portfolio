@@ -39,6 +39,14 @@ h1,h2,h3{font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:.02em}
 .neon{color:var(--neon);text-shadow:0 0 12px var(--neon-glow)}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
+/* Page routing view handling */
+.page-section {
+  display: none; /* Hide all pages by default */
+}
+.page-section.active {
+  display: block; /* Only display active page */
+}
+
 /* utility */
 .bg-grid{
   background-image:
@@ -69,8 +77,8 @@ header{
 .logo{font-family:'Orbitron';font-weight:900;letter-spacing:.2em;font-size:20px}
 .logo span{color:var(--neon)}
 nav.links{display:flex;gap:32px;font-size:12px;letter-spacing:.2em;font-family:'JetBrains Mono';color:var(--muted)}
-nav.links a{transition:color .2s}
-nav.links a:hover{color:var(--neon)}
+nav.links a{transition:color .2s; cursor: pointer;}
+nav.links a:hover, nav.links a.active{color:var(--neon)}
 @media(max-width:768px){nav.links{display:none}}
 
 /* social rail */
@@ -84,15 +92,16 @@ nav.links a:hover{color:var(--neon)}
 @media(max-width:1024px){.rail{display:none}}
 
 /* hero */
-.hero{padding:120px 24px 80px;position:relative}
+.hero{padding:140px 24px 80px;position:relative; min-height: calc(100vh - 64px); display: flex; align-items: center;}
 .hero-grid{
   display:grid;gap:40px;align-items:center;max-width:1200px;margin:0 auto;
   grid-template-columns:1.1fr 1fr auto;
+  width: 100%;
 }
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
 .hero h1{font-size:clamp(40px,7vw,80px);line-height:.95}
 .hero .tag{color:var(--neon);font-family:'JetBrains Mono';letter-spacing:.3em;font-size:13px;margin-bottom:12px}
-.hero .sub{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;margin-top:20px;color:#cfe5f0}
+.hero .sub">CYBER SECURITY ENTHUSIAST | DIGITAL FORENSICS LEARNER | OSINT RESEARCHER</p>
 .hero p.desc{color:var(--muted);margin-top:20px;max-width:440px}
 .btn-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
 .btn{
@@ -110,11 +119,27 @@ nav.links a:hover{color:var(--neon)}
   50%{box-shadow:0 0 22px 4px var(--neon-glow)}
 }
 
-.hero-img{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#000;aspect-ratio:5/4;display:grid;place-items:center;position:relative}
-.hero-img i{font-size:160px;color:var(--neon);text-shadow:0 0 40px var(--neon-glow)}
+.hero-img{
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+  background:#000;
+  aspect-ratio:5/4;
+  display:grid;
+  place-items:center;
+  position:relative;
+  box-shadow:0 0 30px rgba(42,240,212,.15);
+}
+.hero-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index: 2;
+}
 .hero-img::before{
   content:"";position:absolute;inset:0;
   background:radial-gradient(circle at 50% 50%,rgba(42,240,212,.25),transparent 60%);
+  z-index: 1;
 }
 
 .stats{display:flex;flex-direction:column;gap:12px;width:210px}
@@ -124,7 +149,7 @@ nav.links a:hover{color:var(--neon)}
 .stat .v{color:var(--neon);font-family:'JetBrains Mono';font-size:14px;margin-top:4px}
 
 /* section */
-section{padding:96px 24px}
+section{padding:140px 24px 96px}
 .section-label{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--neon);font-family:'JetBrains Mono';font-size:13px;letter-spacing:.3em}
 .section-label::before,.section-label::after{content:"";display:block;width:32px;height:1px;background:var(--neon)}
 .section-title{font-size:clamp(32px,5vw,52px);text-align:center;margin:12px 0 56px}
@@ -183,13 +208,24 @@ section{padding:96px 24px}
 .proj .more:hover{gap:12px}
 
 /* certs */
-.cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-@media(max-width:1024px){.cert-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
-.cert{padding:16px;display:flex;align-items:center;gap:12px}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:1024px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cert-grid{grid-template-columns:1fr}}
+.cert{padding:20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cert .cert-info{display:flex;align-items:center;gap:14px;flex:1}
 .cert .ico{width:48px;height:48px;display:grid;place-items:center;border-radius:6px;flex-shrink:0}
-.cert .name{font-size:12px;font-weight:700;letter-spacing:.05em;line-height:1.3}
+.cert .name{font-size:13px;font-weight:700;letter-spacing:.05em;line-height:1.3;color:var(--fg)}
 .cert .stat{font-family:'JetBrains Mono';font-size:11px;margin-top:4px}
+.cert .btn-view{
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px;
+  letter-spacing:.1em;
+  padding:6px 12px;
+  border-radius:4px;
+  cursor:pointer;
+  transition:all .2s ease;
+  white-space:nowrap;
+}
 
 /* contact */
 .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -205,14 +241,14 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
 
 <header>
   <div class="container nav-inner">
-    <a href="#home" class="logo">MAYUR<span>.</span></a>
+    <a onclick="navigateTo('home')" class="logo" style="cursor:pointer;">MAYUR<span>.</span></a>
     <nav class="links" id="navLinks">
-      <a href="#home">HOME</a>
-      <a href="#about">ABOUT</a>
-      <a href="#skills">SKILLS</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#certifications">CERTIFICATIONS</a>
-      <a href="#contact">CONTACT</a>
+      <a onclick="navigateTo('home')" id="nav-home" class="active">HOME</a>
+      <a onclick="navigateTo('about')" id="nav-about">ABOUT</a>
+      <a onclick="navigateTo('skills')" id="nav-skills">SKILLS</a>
+      <a onclick="navigateTo('projects')" id="nav-projects">PROJECTS</a>
+      <a onclick="navigateTo('certifications')" id="nav-certifications">CERTIFICATIONS</a>
+      <a onclick="navigateTo('contact')" id="nav-contact">CONTACT</a>
     </nav>
   </div>
 </header>
@@ -221,10 +257,10 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
   <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
   <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
   <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a href="mayurchirutkar@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+  <a onclick="navigateTo('contact')" aria-label="Email" style="cursor:pointer;"><i class="fa-solid fa-envelope"></i></a>
 </aside>
 
-<section id="home" class="hero bg-grid">
+<section id="home" class="hero bg-grid page-section active">
   <div class="hero-grid">
     <div>
       <p class="tag">HELLO, I'M</p>
@@ -233,10 +269,12 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
       <p class="desc">I break systems to build stronger ones. Passionate about Cyber Security, Ethical Hacking, Digital Forensics and protecting digital world from threats.</p>
       <div class="btn-row">
         <a href="#" class="btn pulse">DOWNLOAD RESUME <i class="fa-solid fa-download"></i></a>
-        <a href="#contact" class="btn ghost">CONTACT ME <i class="fa-solid fa-paper-plane"></i></a>
+        <a onclick="navigateTo('contact')" class="btn ghost">CONTACT ME <i class="fa-solid fa-paper-plane"></i></a>
       </div>
     </div>
-    
+    <div class="hero-img">
+      <img src="m.png" alt="Mayur Chirutkar Profile Pic"/>
+    </div>
     <div class="stats">
       <div class="stat card corner-frame"><div class="l">IP ADDRESS</div><div class="v">192.168.1.1</div></div>
       <div class="stat card corner-frame"><div class="l">STATUS</div><div class="v">UNTRACEABLE</div></div>
@@ -246,7 +284,7 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
   </div>
 </section>
 
-<section id="about">
+<section id="about" class="page-section">
   <div class="container">
     <div class="section-label">GET TO KNOW ME</div>
     <h2 class="section-title">ABOUT ME</h2>
@@ -275,7 +313,7 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
   </div>
 </section>
 
-<section id="skills">
+<section id="skills" class="page-section">
   <div class="container">
     <div class="section-label">MY EXPERTISE</div>
     <h2 class="section-title">SKILLS</h2>
@@ -283,7 +321,7 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
   </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="page-section">
   <div class="container">
     <div class="section-label">MY WORK</div>
     <h2 class="section-title">PROJECTS</h2>
@@ -291,7 +329,7 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
   </div>
 </section>
 
-<section id="certifications">
+<section id="certifications" class="page-section">
   <div class="container">
     <div class="section-label">MY ACHIEVEMENTS</div>
     <h2 class="section-title">CERTIFICATIONS</h2>
@@ -299,22 +337,47 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-fa
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="page-section">
   <div class="container">
     <div class="section-label">GET IN TOUCH</div>
     <h2 class="section-title">CONTACT ME</h2>
     <div class="contact-grid">
       <div class="c-item card"><i class="fa-solid fa-envelope"></i><span>mayurchirutkar@gmail.com</span></div>
-      <div class="c-item card"><i class="fa-solid fa-phone"></i><span>+91 9662071974</span></div>
+      <div class="c-item card"><i class="fa-solid fa-phone"></i><span>+91 1234567890</span></div>
       <div class="c-item card"><i class="fa-solid fa-location-dot"></i><span>Vadodara, Gujarat, India</span></div>
       <div class="c-item card"><i class="fa-solid fa-briefcase"></i><span>Open to Internships & Opportunities</span></div>
     </div>
   </div>
 </section>
 
-<footer>© MAYUR CHIRUTKAR | ALL RIGHTS RESERVED</footer>
+<footer>© 2026 MAYUR CHIRUTKAR | ALL RIGHTS RESERVED</footer>
 
 <script>
+// Page routing system
+function navigateTo(sectionId) {
+  // Hide all sections
+  const sections = document.querySelectorAll('.page-section');
+  sections.forEach(sec => sec.classList.remove('active'));
+  
+  // Show target section
+  const targetSection = document.getElementById(sectionId);
+  if(targetSection) {
+    targetSection.classList.add('active');
+  }
+
+  // Update nav links styling
+  const navLinks = document.querySelectorAll('nav.links a');
+  navLinks.forEach(link => link.classList.remove('active'));
+  
+  const activeLink = document.getElementById(`nav-${sectionId}`);
+  if(activeLink) {
+    activeLink.classList.add('active');
+  }
+  
+  // Scroll to top of window smoothly on page switch
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
 const skills = [
   {icon:'fa-shield-halved',name:'NETWORK SECURITY',pct:90},
   {icon:'fa-terminal',name:'ETHICAL HACKING',pct:85},
@@ -347,20 +410,24 @@ document.getElementById('projGrid').innerHTML = projects.map(p=>`
   </article>`).join('');
 
 const certs = [
-  {n:'AWS CLOUD PRACTITIONER',s:'In Progress',c:'#ff9d3a'},
-  {n:'WIRESHARK ANALYSIS',s:'Certified',c:'#3b9eff'},
-  {n:'CYBER SECURITY FUNDAMENTALS',s:'Certified',c:'#2dd4a8'},
-  {n:'DIGITAL FORENSICS FUNDAMENTALS',s:'Certified',c:'#a78bfa'},
-  {n:'ETHICAL HACKING FUNDAMENTALS',s:'In Progress',c:'#ec4899'},
+  {n:'AWS CLOUD PRACTITIONER',s:'In Progress',c:'#ff9d3a',url:'#'},
+  {n:'WIRESHARK ANALYSIS',s:'Certified',c:'#3b9eff',url:'#'},
+  {n:'CYBER SECURITY FUNDAMENTALS',s:'Certified',c:'#2dd4a8',url:'#'},
+  {n:'DIGITAL FORENSICS FUNDAMENTALS',s:'Certified',c:'#a78bfa',url:'#'},
+  {n:'ETHICAL HACKING FUNDAMENTALS',s:'In Progress',c:'#ec4899',url:'#'},
 ];
 document.getElementById('certGrid').innerHTML = certs.map(c=>`
   <div class="cert card">
-    <div class="ico" style="background:${c.c}22;border:1px solid ${c.c}80"><i class="fa-solid fa-shield-halved" style="color:${c.c};font-size:22px"></i></div>
-    <div>
-      <div class="name">${c.n}</div>
-      <div class="stat" style="color:${c.s==='Certified'?'var(--neon)':'var(--warn)'}">${c.s}</div>
-      <a href="#" font-family="JetBrains Mono"><i class="fa-brands">Link</i></a>
+    <div class="cert-info">
+      <div class="ico" style="background:${c.c}22;border:1px solid ${c.c}80"><i class="fa-solid fa-shield-halved" style="color:${c.c};font-size:22px"></i></div>
+      <div>
+        <div class="name">${c.n}</div>
+        <div class="stat" style="color:${c.s==='Certified'?'var(--neon)':'var(--warn)'}">${c.s}</div>
+      </div>
     </div>
+    <a href="${c.url}" class="btn-view" style="border: 1px solid ${c.s==='Certified'? 'var(--neon)' : 'var(--border)'}; color: ${c.s==='Certified'? 'var(--neon)' : 'var(--muted)'}; background: ${c.s==='Certified'? 'rgba(42,240,212,.05)' : 'transparent'}; pointer-events: ${c.s==='Certified'? 'auto' : 'none'}; opacity: ${c.s==='Certified'? '1' : '0.4'}">
+      VIEW <i class="fa-solid fa-angle-right"></i>
+    </a>
   </div>`).join('');
 
 // activity blinker
