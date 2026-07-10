@@ -1,395 +1,356 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayur Chirutkar | Cyber Security Portfolio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mayur Chirutkar — Cyber Security & Digital Forensics</title>
+<meta name="description" content="Portfolio of Mayur Chirutkar — Cyber Security Enthusiast, Digital Forensics Learner and OSINT Researcher." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --bg:#040b13;
+  --bg2:#071521;
+  --card:#0a1822;
+  --fg:#e6f4ff;
+  --muted:#7e93a3;
+  --neon:#2af0d4;
+  --neon-glow:rgba(42,240,212,.5);
+  --border:rgba(42,240,212,.2);
+  --warn:#fbbf24;
+  --green:#5cf08a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Rajdhani',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--fg);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height:1.5;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:.02em}
+.mono{font-family:'JetBrains Mono',monospace}
+.neon{color:var(--neon);text-shadow:0 0 12px var(--neon-glow)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
 
-    <link rel="stylesheet" href="style.css">
+/* utility */
+.bg-grid{
+  background-image:
+    linear-gradient(rgba(42,240,212,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(42,240,212,.06) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.card{
+  background:linear-gradient(135deg,rgba(42,240,212,.04),rgba(0,0,0,.4));
+  border:1px solid var(--border);
+  border-radius:8px;
+  position:relative;
+}
+.corner-frame::before,.corner-frame::after{
+  content:'';position:absolute;width:14px;height:14px;border:2px solid var(--neon);
+}
+.corner-frame::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.corner-frame::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+/* nav */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(4,11,19,.7);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Orbitron';font-weight:900;letter-spacing:.2em;font-size:20px}
+.logo span{color:var(--neon)}
+nav.links{display:flex;gap:32px;font-size:12px;letter-spacing:.2em;font-family:'JetBrains Mono';color:var(--muted)}
+nav.links a{transition:color .2s}
+nav.links a:hover{color:var(--neon)}
+@media(max-width:768px){nav.links{display:none}}
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+/* social rail */
+.rail{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:12px}
+.rail a{
+  width:40px;height:40px;display:grid;place-items:center;
+  border:1px solid var(--border);border-radius:6px;color:var(--neon);
+  background:rgba(10,24,34,.6);transition:transform .2s;
+}
+.rail a:hover{transform:scale(1.1)}
+@media(max-width:1024px){.rail{display:none}}
+
+/* hero */
+.hero{padding:120px 24px 80px;position:relative}
+.hero-grid{
+  display:grid;gap:40px;align-items:center;max-width:1200px;margin:0 auto;
+  grid-template-columns:1.1fr 1fr auto;
+}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(40px,7vw,80px);line-height:.95}
+.hero .tag{color:var(--neon);font-family:'JetBrains Mono';letter-spacing:.3em;font-size:13px;margin-bottom:12px}
+.hero .sub{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;margin-top:20px;color:#cfe5f0}
+.hero p.desc{color:var(--muted);margin-top:20px;max-width:440px}
+.btn-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:13px 22px;
+  border-radius:6px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;
+  border:1px solid var(--neon);color:var(--neon);background:rgba(42,240,212,.08);
+  cursor:pointer;transition:background .2s;
+}
+.btn:hover{background:rgba(42,240,212,.18)}
+.btn.ghost{border-color:var(--border);color:var(--fg);background:transparent}
+.btn.ghost:hover{border-color:var(--neon);color:var(--neon)}
+.btn.pulse{animation:pulse 2.5s infinite}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 var(--neon-glow)}
+  50%{box-shadow:0 0 22px 4px var(--neon-glow)}
+}
+
+.hero-img{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#000;aspect-ratio:5/4;display:grid;place-items:center;position:relative}
+.hero-img i{font-size:160px;color:var(--neon);text-shadow:0 0 40px var(--neon-glow)}
+.hero-img::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,rgba(42,240,212,.25),transparent 60%);
+}
+
+.stats{display:flex;flex-direction:column;gap:12px;width:210px}
+@media(max-width:980px){.stats{flex-direction:row;flex-wrap:wrap;width:100%}.stats > *{flex:1 1 45%}}
+.stat{padding:12px 16px}
+.stat .l{font-size:10px;letter-spacing:.2em;color:var(--muted);font-family:'JetBrains Mono'}
+.stat .v{color:var(--neon);font-family:'JetBrains Mono';font-size:14px;margin-top:4px}
+
+/* section */
+section{padding:96px 24px}
+.section-label{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--neon);font-family:'JetBrains Mono';font-size:13px;letter-spacing:.3em}
+.section-label::before,.section-label::after{content:"";display:block;width:32px;height:1px;background:var(--neon)}
+.section-title{font-size:clamp(32px,5vw,52px);text-align:center;margin:12px 0 56px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.profile{padding:24px;text-align:center}
+.profile .avatar{width:176px;height:176px;border-radius:50%;overflow:hidden;border:2px solid var(--neon);margin:0 auto;box-shadow:0 0 30px var(--neon-glow)}
+.profile .term{margin-top:18px;font-family:'JetBrains Mono';font-size:12px}
+.profile .term .p1{color:var(--neon)}
+.profile .term .p2{color:var(--green);margin-top:4px}
+.expertise{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:36px}
+@media(max-width:600px){.expertise{grid-template-columns:repeat(2,1fr)}}
+.exp-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.exp-item i{font-size:28px;color:var(--neon)}
+.exp-item span{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.1em;color:#cfe5f0}
+
+/* skills */
+.skills-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+@media(max-width:1024px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+.skill{padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .2s}
+.skill:hover{transform:translateY(-4px)}
+.skill i{font-size:36px;color:var(--neon);margin-bottom:16px}
+.skill .name{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.1em;font-weight:600;min-height:36px}
+.bar{width:100%;height:6px;border-radius:3px;background:rgba(42,240,212,.1);margin-top:16px;overflow:hidden}
+.bar > div{height:100%;background:linear-gradient(90deg,var(--neon),#5cf08a);box-shadow:0 0 8px var(--neon-glow);border-radius:3px}
+.pct{font-family:'JetBrains Mono';font-size:10px;color:var(--neon);align-self:flex-end;margin-top:4px}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.proj-grid{grid-template-columns:1fr}}
+.proj{overflow:hidden}
+.proj .top{aspect-ratio:16/9;background:rgba(42,240,212,.05);display:grid;place-items:center;border-bottom:1px solid var(--border);position:relative}
+.proj .top::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(42,240,212,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(42,240,212,.06) 1px,transparent 1px);background-size:30px 30px;opacity:.5}
+.proj .top i{font-size:56px;color:var(--neon);text-shadow:0 0 20px var(--neon-glow);z-index:1}
+.proj .body{padding:20px}
+.proj h3{color:var(--neon);letter-spacing:.1em;font-size:18px}
+.proj p{color:var(--muted);font-size:14px;margin-top:8px}
+.proj .more{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);display:inline-flex;align-items:center;gap:8px;color:var(--neon);font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;cursor:pointer;transition:gap .2s}
+.proj .more:hover{gap:12px}
+
+/* certs */
+.cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+@media(max-width:1024px){.cert-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
+.cert{padding:16px;display:flex;align-items:center;gap:12px}
+.cert .ico{width:48px;height:48px;display:grid;place-items:center;border-radius:6px;flex-shrink:0}
+.cert .name{font-size:12px;font-weight:700;letter-spacing:.05em;line-height:1.3}
+.cert .stat{font-family:'JetBrains Mono';font-size:11px;margin-top:4px}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
+.c-item{padding:16px;display:flex;align-items:center;gap:12px}
+.c-item i{color:var(--neon);font-size:18px}
+.c-item span{font-size:14px}
+
+footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-family:'JetBrains Mono';font-size:12px;color:var(--muted);letter-spacing:.2em}
+</style>
 </head>
-
 <body>
 
-    <!-- Matrix Background -->
-    <canvas id="matrix"></canvas>
+<header>
+  <div class="container nav-inner">
+    <a href="#home" class="logo">MAYUR<span>.</span></a>
+    <nav class="links" id="navLinks">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#certifications">CERTIFICATIONS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- Navigation -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                MAYUR<span>.</span>
-            </div>
+<aside class="rail">
+  <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+  <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#contact" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+</aside>
 
-            <ul class="nav-links">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#skills">SKILLS</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="#certifications">CERTIFICATIONS</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Social Sidebar -->
-    <div class="social-sidebar">
-
-        <a href="https://github.com/Mayurhack" target="_blank">
-            <i class="fab fa-github"></i>
-        </a>
-
-        <a href="https://www.linkedin.com/in/mayur-chirutkar-2182b2370/" target="_blank">
-            <i class="fab fa-linkedin"></i>
-        </a>
-
-        <a href="mailto:mayurchirutkar@gmail.com">
-            <i class="fas fa-envelope"></i>
-        </a>
-
+<section id="home" class="hero bg-grid">
+  <div class="hero-grid">
+    <div>
+      <p class="tag">HELLO, I'M</p>
+      <h1>MAYUR<br><span class="neon">CHIRUTKAR</span></h1>
+      <p class="sub">CYBER SECURITY ENTHUSIAST | DIGITAL FORENSICS LEARNER | OSINT RESEARCHER</p>
+      <p class="desc">I break systems to build stronger ones. Passionate about Cyber Security, Ethical Hacking, Digital Forensics and protecting digital world from threats.</p>
+      <div class="btn-row">
+        <a href="#" class="btn pulse">DOWNLOAD RESUME <i class="fa-solid fa-download"></i></a>
+        <a href="#contact" class="btn ghost">CONTACT ME <i class="fa-solid fa-paper-plane"></i></a>
+      </div>
     </div>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-
-        <div class="hero-left">
-
-            <span class="intro">HELLO, I'M</span>
-
-            <h1>
-                MAYUR <br>
-                <span>CHIRUTKAR</span>
-            </h1>
-
-            <div class="typing-container">
-                <span id="typing"></span>
-            </div>
-
-            <p>
-                Passionate Cyber Security student focused on Digital Forensics,
-                Ethical Hacking, Network Security, Malware Analysis,
-                OSINT Investigation and Cloud Security.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="assets/resume.pdf"
-                class="btn primary"
-                download>
-
-                    Download Resume
-                </a>
-
-                <a href="#contact"
-                class="btn secondary">
-
-                    Contact Me
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="hero-right">
-
-            <div class="glow-circle"></div>
-
-            <img src="m.png"
-            alt="Mayur Chirutkar">
-
-        </div>
-
-        <div class="cyber-info">
-
-            <div class="info-card">
-                <h4>STATUS</h4>
-                <p>SECURE</p>
-            </div>
-
-            <div class="info-card">
-                <h4>ROLE</h4>
-                <p>CYBER ANALYST</p>
-            </div>
-
-            <div class="info-card">
-                <h4>FOCUS</h4>
-                <p>DIGITAL FORENSICS</p>
-            </div>
-
-            <div class="info-card">
-                <h4>MISSION</h4>
-                <p>PROTECT SYSTEMS</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- About Section -->
-    ```html
-<div class="about-content">
-
-    <h3>Cyber Security & Digital Forensics Enthusiast</h3>
-
-    <p>
-        Hello! I'm <strong>Mayur Chirutkar</strong>, a passionate Cyber Security student
-        dedicated to protecting digital systems and investigating cyber threats.
-        My interests include Digital Forensics, Network Security, OSINT,
-        Malware Analysis, Ethical Hacking, and Cloud Security.
-    </p>
-
-    <p>
-        I enjoy working with security tools such as Wireshark, Burp Suite,
-        Linux, and AWS while continuously expanding my knowledge of modern
-        cyber defense techniques. My goal is to contribute to cyber crime
-        investigations and build innovative security solutions that help
-        organizations stay protected in an evolving digital landscape.
-    </p>
-
-    <p>
-        Currently, I am developing practical projects in Digital Forensics,
-        AI-powered investigation systems, and Cyber Security automation to
-        strengthen my technical expertise and industry readiness.
-    </p>
-
-    <div class="about-features">
-
-        <div class="feature">
-            <i class="fas fa-fingerprint"></i>
-            <span>Digital Forensics</span>
-        </div>
-
-        <div class="feature">
-            <i class="fas fa-network-wired"></i>
-            <span>Network Security</span>
-        </div>
-
-        <div class="feature">
-            <i class="fas fa-user-secret"></i>
-            <span>Ethical Hacking</span>
-        </div>
-
-        <div class="feature">
-            <i class="fas fa-globe"></i>
-            <span>OSINT Research</span>
-        </div>
-
+    <div class="hero-img">
+      <i class="fa-solid fa-user-secret"></i>
     </div>
-
-</div>
-```
-
-    <!-- Skills -->
-    <section id="skills" class="skills">
-
-        <div class="section-title">
-            <h2>SKILLS</h2>
-        </div>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <h3>Network Security</h3>
-                <div class="progress"><span style="width:90%"></span></div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Digital Forensics</h3>
-                <div class="progress"><span style="width:85%"></span></div>
-            </div>
-
-            <div class="skill-card">
-                <h3>OSINT</h3>
-                <div class="progress"><span style="width:80%"></span></div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Python</h3>
-                <div class="progress"><span style="width:75%"></span></div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Wireshark</h3>
-                <div class="progress"><span style="width:85%"></span></div>
-            </div>
-
-            <div class="skill-card">
-                <h3>AWS Security</h3>
-                <div class="progress"><span style="width:70%"></span></div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="projects">
-
-        <div class="section-title">
-            <h2>PROJECTS</h2>
-        </div>
-
-        ```html
-<div class="project-grid">
-
-    <div class="project-card">
-
-        <h3>CrimeGPT</h3>
-
-        <p>
-            AI-powered cyber investigation platform designed to assist law
-            enforcement agencies and cyber analysts in analyzing digital evidence,
-            detecting cyber threats, and generating intelligent investigation reports.
-        </p>
-
-        <h4>Technologies</h4>
-        <p>Python, Streamlit, AI/ML, Digital Forensics, Cyber Security</p>
-
-        <h4>Use Case</h4>
-        <p>
-            Helps investigators analyze cyber incidents and forensic evidence
-            efficiently using artificial intelligence.
-        </p>
-
+    <div class="stats">
+      <div class="stat card corner-frame"><div class="l">IP ADDRESS</div><div class="v">192.168.1.1</div></div>
+      <div class="stat card corner-frame"><div class="l">STATUS</div><div class="v">UNTRACEABLE</div></div>
+      <div class="stat card corner-frame"><div class="l">LOCATION</div><div class="v">UNKNOWN</div></div>
+      <div class="stat card corner-frame"><div class="l">ACTIVITY</div><div class="v" id="activity">HACKING...</div></div>
     </div>
+  </div>
+</section>
 
-    <div class="project-card">
-
-        <h3>Digital Forensics Toolkit</h3>
-
-        <p>
-            Comprehensive forensic toolkit for evidence collection, hash analysis,
-            malware detection, file integrity verification, and investigation support.
-        </p>
-
-        <h4>Technologies</h4>
-        <p>Python, SHA256 Hashing, Malware Analysis, Streamlit</p>
-
-        <h4>Use Case</h4>
-        <p>
-            Enables forensic investigators to examine digital evidence while
-            maintaining evidence integrity.
-        </p>
-
+<section id="about">
+  <div class="container">
+    <div class="section-label">GET TO KNOW ME</div>
+    <h2 class="section-title">ABOUT ME</h2>
+    <div class="about-grid">
+      <div class="profile card corner-frame">
+        <div class="avatar"><i class="fa-solid fa-user" style="font-size:90px;color:var(--neon);display:grid;place-items:center;width:100%;height:100%;background:#0a1822"></i></div>
+        <div class="term">
+          <div class="p1">root@mayur:~$ whoami</div>
+          <div class="p2">Cyber Security Student</div>
+        </div>
+      </div>
+      <div>
+        <p style="color:var(--muted)">I am a passionate Cyber Security student focused on Digital Forensics, Network Security, Malware Analysis, OSINT Investigation, Web Application Security and Cloud Security.</p>
+        <p style="color:var(--muted);margin-top:16px">I enjoy solving real-world security challenges, analyzing threats and building projects that create impact.</p>
+        <div class="expertise">
+          <div class="exp-item"><i class="fa-solid fa-fingerprint"></i><span>Digital Forensics</span></div>
+          <div class="exp-item"><i class="fa-solid fa-shield-halved"></i><span>Network Security</span></div>
+          <div class="exp-item"><i class="fa-solid fa-terminal"></i><span>Ethical Hacking</span></div>
+          <div class="exp-item"><i class="fa-solid fa-globe"></i><span>OSINT</span></div>
+          <div class="exp-item"><i class="fa-solid fa-cloud"></i><span>Cloud Security</span></div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="project-card">
+<section id="skills">
+  <div class="container">
+    <div class="section-label">MY EXPERTISE</div>
+    <h2 class="section-title">SKILLS</h2>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
 
-        <h3>Scholarship Management Portal</h3>
+<section id="projects">
+  <div class="container">
+    <div class="section-label">MY WORK</div>
+    <h2 class="section-title">PROJECTS</h2>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
 
-        <p>
-            Web application that helps economically disadvantaged students apply
-            for scholarships and enables organizations to manage applications efficiently.
-        </p>
+<section id="certifications">
+  <div class="container">
+    <div class="section-label">MY ACHIEVEMENTS</div>
+    <h2 class="section-title">CERTIFICATIONS</h2>
+    <div class="cert-grid" id="certGrid"></div>
+  </div>
+</section>
 
-        <h4>Technologies</h4>
-        <p>HTML, CSS, JavaScript, PHP, MySQL</p>
-
-        <h4>Use Case</h4>
-        <p>
-            Simplifies scholarship application processing and student verification.
-        </p>
-
+<section id="contact">
+  <div class="container">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title">CONTACT ME</h2>
+    <div class="contact-grid">
+      <div class="c-item card"><i class="fa-solid fa-envelope"></i><span>mayurchirutkar@gmail.com</span></div>
+      <div class="c-item card"><i class="fa-solid fa-phone"></i><span>+91 1234567890</span></div>
+      <div class="c-item card"><i class="fa-solid fa-location-dot"></i><span>Vadodara, Gujarat, India</span></div>
+      <div class="c-item card"><i class="fa-solid fa-briefcase"></i><span>Open to Internships & Opportunities</span></div>
     </div>
+  </div>
+</section>
 
-    <div class="project-card">
+<footer>© 2025 MAYUR CHIRUTKAR | ALL RIGHTS RESERVED</footer>
 
-        <h3>Cyber Evidence Analyzer</h3>
+<script>
+const skills = [
+  {icon:'fa-shield-halved',name:'NETWORK SECURITY',pct:90},
+  {icon:'fa-terminal',name:'ETHICAL HACKING',pct:85},
+  {icon:'fa-fingerprint',name:'DIGITAL FORENSICS',pct:80},
+  {icon:'fa-globe',name:'WEB SECURITY',pct:85},
+  {icon:'fa-code',name:'PYTHON PROGRAMMING',pct:75},
+  {icon:'fa-cloud',name:'CLOUD SECURITY',pct:70},
+];
+document.getElementById('skillsGrid').innerHTML = skills.map(s=>`
+  <div class="skill card corner-frame">
+    <i class="fa-solid ${s.icon}"></i>
+    <div class="name">${s.name}</div>
+    <div class="bar"><div style="width:${s.pct}%"></div></div>
+    <div class="pct">${s.pct}%</div>
+  </div>`).join('');
 
-        <p>
-            Intelligent evidence processing system that analyzes logs, files,
-            and digital artifacts to identify suspicious activities.
-        </p>
-
-        <h4>Technologies</h4>
-        <p>Python, Log Analysis, Digital Forensics</p>
-
-        <h4>Use Case</h4>
-        <p>
-            Assists investigators in finding potential evidence and attack indicators.
-        </p>
-
+const projects = [
+  {t:'CRIMEGPT',d:'AI-powered cyber investigation platform for evidence analysis, cyber crime detection and forensic reporting.'},
+  {t:'DIGITAL FORENSICS TOOLKIT',d:'Toolkit for hash analysis, malware scanning, evidence processing and digital forensic investigation.'},
+  {t:'SCHOLARSHIP PORTAL',d:'Scholarship management system helping students to apply, track and manage scholarship applications.'},
+];
+document.getElementById('projGrid').innerHTML = projects.map(p=>`
+  <article class="proj card">
+    <div class="top"><i class="fa-solid fa-shield-halved"></i></div>
+    <div class="body">
+      <h3>${p.t}</h3>
+      <p>${p.d}</p>
+      <a class="more">VIEW PROJECT <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
     </div>
+  </article>`).join('');
 
-</div>
-```
+const certs = [
+  {n:'AWS CLOUD PRACTITIONER',s:'In Progress',c:'#ff9d3a'},
+  {n:'WIRESHARK ANALYSIS',s:'Certified',c:'#3b9eff'},
+  {n:'CYBER SECURITY FUNDAMENTALS',s:'Certified',c:'#2dd4a8'},
+  {n:'DIGITAL FORENSICS FUNDAMENTALS',s:'Certified',c:'#a78bfa'},
+  {n:'ETHICAL HACKING FUNDAMENTALS',s:'In Progress',c:'#ec4899'},
+];
+document.getElementById('certGrid').innerHTML = certs.map(c=>`
+  <div class="cert card">
+    <div class="ico" style="background:${c.c}22;border:1px solid ${c.c}80"><i class="fa-solid fa-shield-halved" style="color:${c.c};font-size:22px"></i></div>
+    <div>
+      <div class="name">${c.n}</div>
+      <div class="stat" style="color:${c.s==='Certified'?'var(--neon)':'var(--warn)'}">${c.s}</div>
+    </div>
+  </div>`).join('');
 
-    </section>
-
-    <!-- Certifications -->
-    <section id="certifications">
-
-        <div class="section-title">
-            <h2>CERTIFICATIONS</h2>
-        </div>
-
-        <div class="cert-grid">
-
-            <div class="cert-card">
-                AWS Cloud Practitioner
-            </div>
-
-            <div class="cert-card">
-                Wireshark Network Analysis
-            </div>
-
-            <div class="cert-card">
-                Cyber Security Fundamentals
-            </div>
-
-            <div class="cert-card">
-                Digital Forensics Training
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-
-        <div class="section-title">
-            <h2>CONTACT ME</h2>
-        </div>
-
-        <div class="contact-container">
-
-            <div class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <p>mayurchirutkar@gmail.com</p>
-            </div>
-
-            <div class="contact-card">
-                <i class="fas fa-phone"></i>
-                <p>+91 9662071974</p>
-            </div>
-
-            <div class="contact-card">
-                <i class="fas fa-location-dot"></i>
-                <p>Gujarat, India</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <footer>
-        <p>
-            © 2026 Mayur Chirutkar | Cyber Security Portfolio
-        </p>
-    </footer>
-
-    <script src="script.js"></script>
-
+// activity blinker
+const acts = ['HACKING...','SCANNING...','DECRYPTING...','ANALYZING...'];
+let i=0; setInterval(()=>{ i=(i+1)%acts.length; document.getElementById('activity').textContent=acts[i]; },1800);
+</script>
 </body>
 </html>
-```
